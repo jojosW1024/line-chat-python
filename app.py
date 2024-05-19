@@ -6,6 +6,8 @@ from linebot.exceptions import (
 )
 from linebot.models import *
 
+import requests
+
 app = Flask(__name__)
 
 # Channel Access Token
@@ -32,7 +34,8 @@ def callback():
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
     message = TextSendMessage(text=event.message.text)
-    line_bot_api.reply_message(event.reply_token, message)
+    web = requests.get('hhttps://script.google.com/macros/s/AKfycbzX3R7MRV4rvd1GW_MyFLG7faiD0ATWpXMRy_MzKtjN2NelngTr-r0iaq_fGvbAkdnCHw/exec')
+    line_bot_api.reply_message(event.reply_token, web.json())
 
 import os
 if __name__ == "__main__":
