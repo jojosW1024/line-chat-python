@@ -5,7 +5,6 @@ from linebot.exceptions import (
     InvalidSignatureError
 )
 from linebot.models import *
-
 import requests
 
 app = Flask(__name__)
@@ -33,8 +32,9 @@ def callback():
 # 處理訊息
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
-    message = TextSendMessage(text=event.message.text)
-    line_bot_api.reply_message(event.reply_token, message)
+    #message = TextSendMessage(text=event.message.text)
+    web = requests.get('https://script.google.com/macros/s/AKfycbzX3R7MRV4rvd1GW_MyFLG7faiD0ATWpXMRy_MzKtjN2NelngTr-r0iaq_fGvbAkdnCHw/exec')
+    line_bot_api.reply_message(event.reply_token, web.json()[1])
 
 import os
 if __name__ == "__main__":
