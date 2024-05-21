@@ -85,7 +85,7 @@ def url(msg):
     elif msg == "台北市" or msg == "台北":
         web = requests.get("https://script.google.com/macros/s/AKfycbzOlYHVhcwApSq7B4ihMCi5sz2F_UoYzKUvbacICN4rMqkFCjel4Sc7WbzZZLCWvqBGkA/exec")
     elif msg == "新北市" or msg == "新北":
-        web = requests.get("https://script.google.com/macros/s/AKfycbzX3R7MRV4rvd1GW_MyFLG7faiD0ATWpXMRy_MzKtjN2NelngTr-r0iaq_fGvbAkdnCHw/exec")
+        web = requests.get("https://script.googleusercontent.com/macros/echo?user_content_key=7wHcJusx4baaMwaS0xUUNGG0GIKf17i9aCqfyCPyVRAoX6NDS0M14aZvcHlYuOqJU4IT0BRZ8i64VYMoJkAbr_hkZxPFSnZCm5_BxDlH2jW0nuo2oDemN9CCS2h10ox_1xSncGQajx_ryfhECjZEnBRcMwuE7zVYRMGSaWM0GJ_KLSXeT0DYpdM_FXv37QkwnY8oT1dVY2ZC4XvVS-Wt_Ahp2BqvHgHc__bEvqkzxa_2VuRjV-OEjA&lib=M9_wlgVHz_iSqCd-d22drDYOtLxJ95Ipz")
     else:
         return False
     return web
