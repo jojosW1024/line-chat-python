@@ -39,12 +39,22 @@ class Status():
 status = Status()
 # 處理訊息
 
+#用來儲存每一位user各自的status,否則每次每個人回應後__init__都會被列回預設值None
+user_sessions = {}
+
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
+    user_id = event.source.user_id
+
+    # 新客使用全部都None
+    if user_id not in user_sessions:
+        user_sessions[user_id] = Status()
+    
+    status = user_sessions[user_id]
     msg = event.message.text
-    #event.message.text 代表接受到的「訊息」
+    
     try:
-        if status.city == None and msg not in ["基隆市","台北市","新北市"]:
+        if status.city is None and msg not in ["基隆市","台北市","新北市"]:
             reply = "請輸入您所在縣市:"
             line_bot_api.reply_message(event.reply_token, TextSendMessage(text = reply))
         elif msg in ["基隆市","台北市","新北市"]:
@@ -52,7 +62,7 @@ def handle_message(event):
             status.url = url(msg) #問縣市層級並找出相對應的連結
             reply = f"請問您住在{status.city}的哪個區呢？" 
             line_bot_api.reply_message(event.reply_token, TextSendMessage(text = reply))
-        elif status.city is True and status.url is True:
+        elif status.city and status.url:
             data = status.url.json()
             status.area = msg
             answer = []
