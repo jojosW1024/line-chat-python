@@ -44,7 +44,7 @@ user_sessions = {}
 
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
-    user_id = event.source.user_id
+    user_id = event.source.userId
 
     # 新客使用全部都None
     if user_id not in user_sessions:
