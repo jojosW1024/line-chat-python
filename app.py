@@ -36,12 +36,12 @@ class Status():
         self.area = None
         self.url = None
 
-
+status = Status()
 # 處理訊息
+
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
     msg = event.message.text
-    status = Status()
     #event.message.text 代表接受到的「訊息」
     try:
         if status.city == None and msg not in ["基隆市","台北市","新北市"]:
