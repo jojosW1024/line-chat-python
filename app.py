@@ -66,7 +66,8 @@ def handle_message(event):
             else:
                 line_bot_api.reply_message(event.reply_token, TextSendMessage(text ="\n- \n".join(reply)))    
         else:
-            raise Error         
+            reply = f"{status.city}"      
+            line_bot_api.reply_message(event.reply_token, TextSendMessage(text = reply))
                
     except:
         reply = TextSendMessage(text = msg)
