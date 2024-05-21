@@ -53,7 +53,7 @@ def handle_message(event):
         elif status.city and status.url:
             data = status.url.json()
             status.area = msg
-            answer = []
+            reply = []
             for i in data:
                 if i[0] == msg:
                     answer = '\n'.join(i)
