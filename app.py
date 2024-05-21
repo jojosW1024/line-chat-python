@@ -30,20 +30,63 @@ def callback():
         abort(400)
     return 'OK'
 
+class Status():
+    def __init__(self):
+        self.city = None
+        self.area = None
+        self.url = None
+
+
 # 處理訊息
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
+    msg = event.message.text
+    status = Status()
     #event.message.text 代表接受到的「訊息」
     try:
-        if event.message.text == "基隆市":
-            web = requests.get('https://script.google.com/macros/s/AKfycbzX3R7MRV4rvd1GW_MyFLG7faiD0ATWpXMRy_MzKtjN2NelngTr-r0iaq_fGvbAkdnCHw/exec')
-            data = web.json()[0]
-            message = TextSendMessage(text = '\n'.join(data))
-            line_bot_api.reply_message(event.reply_token, message)
+        if status.city == None and msg not in ["基隆市","台北市","新北市"]:
+            reply = "請輸入您所在縣市:"
+            line_bot_api.reply_message(event.reply_token, reply)
+        elif msg in ["基隆市","台北市","新北市"]:
+            status.city = msg #根據提供的訊息提供縣市資訊
+            status.url = url(msg) #問縣市層級並找出相對應的連結
+            reply = f"請問您住在{status.city}的哪個區呢？" 
+            line_bot_api.reply_message(event.reply_token, reply)
+        elif status.city is True and status.url is True:
+            data = status.url.json()
+            status.area = msg
+            answer = []
+            for i in data:
+                if i[0] == msg:
+                    answer = TextSendMessage(text = '\n'.join(i))
+                    reply.append(answer)
+                
+            if reply = []:
+                #如果輸入不符合區域格式或找不到
+                reply = "請輸入正確的輸入區域和格式"  
+                line_bot_api.reply_message(event.reply_token, reply)
+            else:
+                line_bot_api.reply_message(event.reply_token, "\n".join(reply))    
+        else:
+            raise Error         
+               
     except:
-        message = TextSendMessage(text = event.message.text)
+        reply = TextSendMessage(text = msg)
         #event.message.text 代表接受到的「訊息」
-        line_bot_api.reply_message(event.reply_token, message)
+        line_bot_api.reply_message(event.reply_token, reply)
+
+
+def url(msg):
+    if msg == "基隆市":
+        web = requests.get('https://script.google.com/macros/s/AKfycbzX3R7MRV4rvd1GW_MyFLG7faiD0ATWpXMRy_MzKtjN2NelngTr-r0iaq_fGvbAkdnCHw/exec')
+    elif msg == "台北市" or msg == "台北":
+        web = requests.get("https://script.google.com/macros/s/AKfycbzOlYHVhcwApSq7B4ihMCi5sz2F_UoYzKUvbacICN4rMqkFCjel4Sc7WbzZZLCWvqBGkA/exec")
+    elif msg == "新北市" or msg == "新北":
+        web = requests.get("https://script.google.com/macros/s/AKfycbzX3R7MRV4rvd1GW_MyFLG7faiD0ATWpXMRy_MzKtjN2NelngTr-r0iaq_fGvbAkdnCHw/exec")
+    else:
+        return False
+    return web
+
 
 
 import os
