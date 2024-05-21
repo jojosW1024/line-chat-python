@@ -36,23 +36,11 @@ class Status():
         self.area = None
         self.url = None
 
+status = Status()
 
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
-    user_id = event.source.userId
-
-    try:
-        if user_id not in user_sessions:
-            user_sessions[user_id] = Status()
-        elif user_id in user_sessions:
-            status = user_sessions[user_id]
-    except:
-        user_sessions = {}
-        user_sessions[user_id] = Status()
-        
-    status = user_sessions[user_id]
     msg = event.message.text
-    
     try:
         if status.city is None and msg not in ["基隆市","台北市","新北市"]:
             reply = "請輸入您所在縣市:"
