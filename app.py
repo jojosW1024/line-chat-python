@@ -36,20 +36,20 @@ class Status():
         self.area = None
         self.url = None
 
-status = Status()
-# 處理訊息
-
-#用來儲存每一位user各自的status,否則每次每個人回應後__init__都會被列回預設值None
-user_sessions = {}
 
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
     user_id = event.source.userId
 
-    # 新客使用全部都None
-    if user_id not in user_sessions:
+    try:
+        if user_id not in user_sessions:
+            user_sessions[user_id] = Status()
+        elif user_id in user_sessions:
+            status = user_sessions[user_id]
+    except:
+        user_sessions = {}
         user_sessions[user_id] = Status()
-    
+        
     status = user_sessions[user_id]
     msg = event.message.text
     
