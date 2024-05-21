@@ -46,27 +46,27 @@ def handle_message(event):
     try:
         if status.city == None and msg not in ["基隆市","台北市","新北市"]:
             reply = "請輸入您所在縣市:"
-            line_bot_api.reply_message(event.reply_token, reply)
+            line_bot_api.reply_message(event.reply_token, TextSendMessage(text = reply))
         elif msg in ["基隆市","台北市","新北市"]:
             status.city = msg #根據提供的訊息提供縣市資訊
             status.url = url(msg) #問縣市層級並找出相對應的連結
             reply = f"請問您住在{status.city}的哪個區呢？" 
-            line_bot_api.reply_message(event.reply_token, reply)
+            line_bot_api.reply_message(event.reply_token, TextSendMessage(text = reply))
         elif status.city is True and status.url is True:
             data = status.url.json()
             status.area = msg
             answer = []
             for i in data:
                 if i[0] == msg:
-                    answer = TextSendMessage(text = '\n'.join(i))
+                    answer = '\n'.join(i)
                     reply.append(answer)
                 
-            if reply = []:
+            if reply == []:
                 #如果輸入不符合區域格式或找不到
                 reply = "請輸入正確的輸入區域和格式"  
-                line_bot_api.reply_message(event.reply_token, reply)
+                line_bot_api.reply_message(event.reply_token, TextSendMessage(text = reply))
             else:
-                line_bot_api.reply_message(event.reply_token, "\n".join(reply))    
+                line_bot_api.reply_message(event.reply_token, TextSendMessage(text ="\n- \n".join(reply)))    
         else:
             raise Error         
                
