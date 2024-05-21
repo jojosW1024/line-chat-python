@@ -64,11 +64,15 @@ def handle_message(event):
                 reply = "請輸入正確的輸入區域和格式"  
                 line_bot_api.reply_message(event.reply_token, TextSendMessage(text = reply))
             else:
-                line_bot_api.reply_message(event.reply_token, TextSendMessage(text ="\n- \n".join(reply)))    
+                line_bot_api.reply_message(event.reply_token, TextSendMessage(text ="\n- \n".join(reply)))
+                status.city = None
+                status.url = None
+                status.area = None    
         else:
             reply = f"{status.city}"      
             line_bot_api.reply_message(event.reply_token, TextSendMessage(text = reply))
-               
+        
+    
     except:
         reply = TextSendMessage(text = msg)
         #event.message.text 代表接受到的「訊息」
