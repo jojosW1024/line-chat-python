@@ -33,11 +33,18 @@ def callback():
 # 處理訊息
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
-    #message = TextSendMessage(text=event.message.text)
-    web = requests.get('https://script.google.com/macros/s/AKfycbzX3R7MRV4rvd1GW_MyFLG7faiD0ATWpXMRy_MzKtjN2NelngTr-r0iaq_fGvbAkdnCHw/exec')
-    data = web.json()[0]
-    message = TextSendMessage(text = '\n'.join(data))
-    line_bot_api.reply_message(event.reply_token, message)
+    #event.message.text 代表接受到的「訊息」
+    try:
+        if event.message.text == "基隆市":
+            web = requests.get('https://script.google.com/macros/s/AKfycbzX3R7MRV4rvd1GW_MyFLG7faiD0ATWpXMRy_MzKtjN2NelngTr-r0iaq_fGvbAkdnCHw/exec')
+            data = web.json()[0]
+            message = TextSendMessage(text = '\n'.join(data))
+            line_bot_api.reply_message(event.reply_token, message)
+    except:
+        message = TextSendMessage(text = event.message.text)
+        #event.message.text 代表接受到的「訊息」
+        line_bot_api.reply_message(event.reply_token, message)
+
 
 import os
 if __name__ == "__main__":
