@@ -38,10 +38,8 @@ def handle_message(event):
     msg = event.message.text
     try:
         if msg in ["基隆市","台北市","新北市"]:   
-            url = url(msg) #問縣市層級並找出相對應的連結
-            data = url.json()
-
-            reply = f"請問您住在{msg}的哪個區呢？" 
+            url_link = url(msg) #問縣市層級並找出相對應的連結
+            data = url_link.json() 
             global ele
             ele = msg
         
@@ -72,7 +70,7 @@ def handle_message(event):
             line_bot_api.reply_message(event.reply_token,text_message)
             ele = ""
     except:
-        reply = TextSendMessage(text = msg)
+        reply = TextSendMessage(text = "奇怪餒")
         #event.message.text 代表接受到的「訊息」
         line_bot_api.reply_message(event.reply_token, reply)
 
