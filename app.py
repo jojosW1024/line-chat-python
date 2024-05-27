@@ -61,15 +61,18 @@ def handle_message(event):
                 
             if reply == []:
                 #如果輸入不符合區域格式或找不到
-                reply = "請輸入正確的區域或格式"  
+                reply = "您輸入之區域不在該縣市或是輸入的區域格式錯誤"  
                 line_bot_api.reply_message(event.reply_token, TextSendMessage(text = reply))
             else:
-                line_bot_api.reply_message(event.reply_token, TextSendMessage(text ="\n- \n".join(reply)))   
+                reply += "\n=========若要重新搜尋，輸入其他縣市即可========="
+                line_bot_api.reply_message(event.reply_token, TextSendMessage(text ="\n- \n".join(reply))) 
+            global ele
             ele = ""
         else:
             fih = "=========縣市與行政區的輸入可能有誤或該行政區查無特約醫療機構\n請重新查詢========="
             text_message = TextSendMessage(text=fih)
             line_bot_api.reply_message(event.reply_token,text_message)
+            global ele
             ele = ""
     except:
         reply = TextSendMessage(text = "奇怪餒")
