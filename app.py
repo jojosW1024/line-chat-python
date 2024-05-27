@@ -30,29 +30,28 @@ def callback():
         abort(400)
     return 'OK'
 
-class Status():
-    def __init__(self):
-        self.city = None
-        self.area = None
-        self.url = None
 
-status = Status()
 
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
     msg = event.message.text
     try:
-        if status.city is None and msg not in ["基隆市","台北市","新北市"]:
-            reply = "請輸入您所在縣市:"
+        if msg in ["基隆市","台北市","新北市"]:   
+            url = url(msg) #問縣市層級並找出相對應的連結
+            data = url.json()
+
+            reply = f"請問您住在{msg}的哪個區呢？" 
+            global ele
+            ele = msg
+        
+            region = []
+            for i in data:
+                if i[0] not in region:
+                    region.append(i[0])
+            region_txt = ",".join(region)
+            reply = f"請輸入其中一個以下行政區:{ region_txt}"
             line_bot_api.reply_message(event.reply_token, TextSendMessage(text = reply))
-        elif msg in ["基隆市","台北市","新北市"]:
-            status.city = msg #根據提供的訊息提供縣市資訊
-            status.url = url(msg) #問縣市層級並找出相對應的連結
-            reply = f"請問您住在{status.city}的哪個區呢？" 
-            line_bot_api.reply_message(event.reply_token, TextSendMessage(text = reply))
-        elif status.city and status.url:
-            data = status.url.json()
-            status.area = msg
+        elif ele != "":
             reply = []
             for i in data:
                 if i[0] == msg:
@@ -61,17 +60,14 @@ def handle_message(event):
                 
             if reply == []:
                 #如果輸入不符合區域格式或找不到
-                reply = "請輸入正確的輸入區域和格式"  
+                reply = "請輸入正確的區域或格式"  
                 line_bot_api.reply_message(event.reply_token, TextSendMessage(text = reply))
             else:
-                line_bot_api.reply_message(event.reply_token, TextSendMessage(text ="\n- \n".join(reply)))
-                status.city = None
-                status.url = None
-                status.area = None    
+                line_bot_api.reply_message(event.reply_token, TextSendMessage(text ="\n- \n".join(reply)))   
         else:
-            reply = f"{status.city}"      
-            line_bot_api.reply_message(event.reply_token, TextSendMessage(text = reply))
-        
+            fih = "=========縣市與行政區的輸入可能有誤或該行政區查無特約醫療機構\n請重新查詢========="
+            text_message = TextSendMessage(text=fih)
+            line_bot_api.reply_message(event.reply_token,text_message)
     
     except:
         reply = TextSendMessage(text = msg)
