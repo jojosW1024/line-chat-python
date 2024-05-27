@@ -30,7 +30,8 @@ def callback():
         abort(400)
     return 'OK'
 
-
+global ele
+ele = ""
 
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
@@ -64,11 +65,12 @@ def handle_message(event):
                 line_bot_api.reply_message(event.reply_token, TextSendMessage(text = reply))
             else:
                 line_bot_api.reply_message(event.reply_token, TextSendMessage(text ="\n- \n".join(reply)))   
+            ele = ""
         else:
             fih = "=========縣市與行政區的輸入可能有誤或該行政區查無特約醫療機構\n請重新查詢========="
             text_message = TextSendMessage(text=fih)
             line_bot_api.reply_message(event.reply_token,text_message)
-    
+            ele = ""
     except:
         reply = TextSendMessage(text = msg)
         #event.message.text 代表接受到的「訊息」
