@@ -64,7 +64,7 @@ def handle_message(event):
                 reply = "您輸入之區域不在該縣市或是輸入的區域格式錯誤"  
                 line_bot_api.reply_message(event.reply_token, TextSendMessage(text = reply))
             else:
-                reply += "\n=========若要重新搜尋，輸入其他縣市即可========="
+                reply.append("\n=========若要重新搜尋，輸入其他縣市即可=========")
                 line_bot_api.reply_message(event.reply_token, TextSendMessage(text ="\n- \n".join(reply))) 
             global ele
             ele = ""
