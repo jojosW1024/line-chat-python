@@ -50,8 +50,10 @@ def handle_message(event):
             region_txt = ",".join(region)
             reply = f"請輸入其中一個以下行政區:{ region_txt}"
             line_bot_api.reply_message(event.reply_token, TextSendMessage(text = reply))
-        elif ele != "":
+        elif ele != "" and ele in ['基隆市', '台北市', '新北市', '桃園市', '新竹縣', '新竹市']:
             reply = []
+            url_link = url(ele)
+            data = url_link.json() 
             for i in data:
                 if i[0] == msg:
                     answer = '\n'.join(i)
