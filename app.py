@@ -57,7 +57,7 @@ def handle_message(event):
             region_txt = ",".join(region)
             reply = f"請輸入其中一個以下行政區:\n{region_txt}"
             line_bot_api.reply_message(event.reply_token, TextSendMessage(text = reply))
-        elif ele != "" and ele in ["基隆市", "台北市", "新北市", '桃園市', '新竹縣', '新竹市', "苗栗縣", "台中市", "彰化縣", "南投縣", "雲林縣", "嘉義縣", "嘉義市", "臺南市", "高雄市", "屏東縣", "宜蘭縣", "花蓮縣", "台東縣", "澎湖縣", "連江縣", "金門縣"]:
+        elif ele != "" and ele in ["基隆市", "台北市", "新北市", '桃園市', '新竹縣', '新竹市', "苗栗縣", "台中市", "彰化縣", "南投縣", "雲林縣", "嘉義縣", "嘉義市", "台南市", "高雄市", "屏東縣", "宜蘭縣", "花蓮縣", "台東縣", "澎湖縣", "連江縣", "金門縣"]:
             reply = []
             url_link = url(ele)
             data = url_link.json() 
@@ -98,10 +98,11 @@ def handle_message(event):
             text_message = TextSendMessage(text=fih)
             line_bot_api.reply_message(event.reply_token,text_message)
             ele = ""
-    except:
-        reply = TextSendMessage(text = "奇怪餒")
-        #event.message.text 代表接受到的「訊息」
+    except Exception as e:
+        reply = TextSendMessage(text=f"奇怪餒，發生錯誤：{str(e)}")
         line_bot_api.reply_message(event.reply_token, reply)
+        #event.message.text 代表接受到的「訊息」
+
 
 
 
@@ -144,7 +145,7 @@ def url(msg):
     elif msg == "屏東縣":
         web = request.get("https://script.google.com/macros/s/AKfycbw7dqUwNwk2EE2QXAyXz0fFhQFEnRI-qCmwSeZ_NG_a9H_TIi1E53G8lUB92_i0T5BtDA/exec")
     elif msg == "台南市":
-        web = request.get("https://script.google.com/macros/s/AKfycbwfaUnPw53jd96Qw7T_ZJRUXDZfCnjA6HauiGo4zvt5JiokuRqcA6d039WSdwHHVd7WzQ/exec")
+        web = request.get("https://www.google.com/url?q=https://script.google.com/macros/s/AKfycbyioRarcPxf69FalbAgI_G1sxDuEvYHBTukh-dGQamgFeYy0tKUd3fL4NHsAZbPytClpw/exec&sa=D&source=editors&ust=1716878970978048&usg=AOvVaw167V3-om2NZ-FW6ELySfcD")
     elif msg == "高雄市":
         web = request.get("https://script.google.com/macros/s/AKfycbxQVrG-p71kc7r6AazfctjOGcNEBeG4G7z6cis0Nw-l0CjpXmrXsBEZRzwYOFLe0Icn1g/exec")
     elif msg == "嘉義縣":
