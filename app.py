@@ -62,10 +62,10 @@ def handle_message(event):
             url_link = url(ele)
             data = url_link.json() 
             for i in data:
-                if i[0] == msg:
+                if str(i[0]) == msg:
 
-                    i[1] = "院所名稱: " + i[1]
-                    i[2] = "院所地址: " + i[2]
+                    i[1] = "院所名稱: " + str(i[1])
+                    i[2] = "院所地址: " + str(i[2])
                     i[3] = "電話: " + str(i[3])
                     i[4] = "疫苗種類: " + str(i[4])
                     try:
@@ -87,6 +87,7 @@ def handle_message(event):
                 #如果輸入不符合區域格式或找不到
                 reply = "您輸入之區域不在該縣市或是輸入的區域格式錯誤"  
                 line_bot_api.reply_message(event.reply_token, TextSendMessage(text = reply))
+                ele = ""
             else:
                 reply.append("\n=========若要重新搜尋，輸入其他縣市即可=========")
                 line_bot_api.reply_message(event.reply_token, TextSendMessage(text ="\n- \n".join(reply))) 
