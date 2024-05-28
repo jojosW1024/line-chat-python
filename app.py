@@ -139,7 +139,7 @@ def url(msg):
     elif msg == "澎湖縣":
         web = request.get("https://script.google.com/macros/s/AKfycbycSHjGoTLzFyCWkF354TBUv_HyUlpPou_J4WOzQSLlh1HKDrLb0QyxMJ6Aw75oi5Ms4g/exec")
     elif msg == "連江縣":
-        web = request.get("https://script.google.com/macros/s/AKfycbxPFh-GczsH3ypOD2fXDneBHlwayDJTTbEpm-Y4NfsMcjnytNVBfEglh_YADumEiSiS-g/exec")
+        web = request.get("https://script.google.com/macros/s/AKfycbzsDX_u9Qcm9yWJB_VgwMokQqOps0lESB5V_PP5NqBcJ-Cts8gCyvTRd6hZ_3EmhfEzRQ/exec")
     elif msg == "宜蘭縣":
         web = request.get("https://script.google.com/macros/s/AKfycbxww_yr4v5LI4AGaQWB1IZOtuH71rxTa3UDeevgmzxsSfPXTvyXJ4gkVzYM3wHsUQ0RmA/exec")
     elif msg == "屏東縣":
