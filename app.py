@@ -39,7 +39,7 @@ ele = ""
 def handle_message(event):
     msg = event.message.text
     try:
-        if msg in ["基隆市","台北市","新北市", '桃園市', '新竹縣', '新竹市', "苗栗縣", "台中市", "彰化縣", "南投縣", "雲林縣", "嘉義縣", "嘉義市", "臺南市", "高雄市", "屏東縣", "宜蘭縣", "花蓮縣", "台東縣", "澎湖縣", "連江縣", "金門縣"]:   
+        if msg in ["基隆市","台北市","新北市", '桃園市', '新竹縣', '新竹市', "苗栗縣", "台中市","彰化縣", "南投縣", "雲林縣", "嘉義縣", "嘉義市", "臺南市", "高雄市", "屏東縣", "宜蘭縣", "花蓮縣", "台東縣", "澎湖縣", "連江縣", "金門縣"]:   
             url_link = url(msg) #問縣市層級並找出相對應的連結
             data = url_link.json() 
             global ele
@@ -66,18 +66,18 @@ def handle_message(event):
 
                     i[1] = "院所名稱: " + i[1]
                     i[2] = "院所地址: " + i[2]
-                    i[3] = "電話: " + i[3]
-                    i[4] = "疫苗種類: " + i[4]
+                    i[3] = "電話: " + str(i[3])
+                    i[4] = "疫苗種類: " + str(i[4])
                     try:
-                        i[5] = "施打時間: " + i[5]
+                        i[5] = "施打時間: " + str(i[5])
                     except:
                         pass
                     try:
-                        i[6] = "收費標準: " + i[6]
+                        i[6] = "收費標準: " + str(i[6])
                     except:
                         pass
                     try:
-                        i[7] = "收費標準: " + i[7]
+                        i[7] = "收費標準: " + str(i[7])
                     except:
                         pass
                     answer = '\n'.join(i[1:])
@@ -90,8 +90,8 @@ def handle_message(event):
             else:
                 reply.append("\n=========若要重新搜尋，輸入其他縣市即可=========")
                 line_bot_api.reply_message(event.reply_token, TextSendMessage(text ="\n- \n".join(reply))) 
-            
-            ele = ""
+                ele = ""
+
         else:
             fih = "=========縣市與行政區的輸入可能有誤或該行政區查無特約醫療機構\n請重新查詢========="
             text_message = TextSendMessage(text=fih)
@@ -115,9 +115,9 @@ def url(msg):
     elif msg == "桃園市":
         web = requests.get("https://script.google.com/macros/s/AKfycbzecYNcYeW_aWl7gaE803LjMbSWjnKdw1wV-5qcVehHXY2lNdQNxdo9lAeYc1GJwgNfPA/exec")
     elif msg == "新竹縣":
-        web = requests.gets("https://script.google.com/macros/s/AKfycbx9G-8eL4qRItS6dY6p7kKBzOk-UTz6w1RjIh67LEbZaTcoIhbmmwC8pDSol__7HovwFg/exec")
-    elif msg == " 新竹市":
-        web = requests.gets("https://script.google.com/macros/s/AKfycbzhVPhjVaGuKVlklabrBJ2sBPy7d8pD4XiAdc-u2RGe9olDCLnC7ZNvxLOghYqWPnLvaA/exec")
+        web = requests.get("https://script.google.com/macros/s/AKfycbx9G-8eL4qRItS6dY6p7kKBzOk-UTz6w1RjIh67LEbZaTcoIhbmmwC8pDSol__7HovwFg/exec")
+    elif msg == "新竹市":
+        web = requests.get("https://script.google.com/macros/s/AKfycbzhVPhjVaGuKVlklabrBJ2sBPy7d8pD4XiAdc-u2RGe9olDCLnC7ZNvxLOghYqWPnLvaA/exec")
     elif msg == "苗栗縣":
         web = request.get("https://script.google.com/macros/s/AKfycbyeOGGFjhymoAFsvlwbxfnNcarwmttDdr_Kk2s7Luaeh6sfS3WzS_NW6ZslYJPsL3AkWg/exec")
     elif msg == "台中市":
