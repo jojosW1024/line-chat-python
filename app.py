@@ -121,37 +121,37 @@ def url(msg):
     elif msg == "新竹市":
         web = requests.get("https://script.google.com/macros/s/AKfycbzhVPhjVaGuKVlklabrBJ2sBPy7d8pD4XiAdc-u2RGe9olDCLnC7ZNvxLOghYqWPnLvaA/exec")
     elif msg == "苗栗縣":
-        web = request.get("https://script.google.com/macros/s/AKfycbyeOGGFjhymoAFsvlwbxfnNcarwmttDdr_Kk2s7Luaeh6sfS3WzS_NW6ZslYJPsL3AkWg/exec")
+        web = requests.get("https://script.google.com/macros/s/AKfycbyeOGGFjhymoAFsvlwbxfnNcarwmttDdr_Kk2s7Luaeh6sfS3WzS_NW6ZslYJPsL3AkWg/exec")
     elif msg == "台中市":
-        web = request.get("https://script.google.com/macros/s/AKfycbxtqLuQFB5N3fiLbWcjyHeeahW35ScsNhg7g5LoBiGuUuvjWyxOo4Rt6MlPR6amimo2hg/exec")
+        web = requests.get("https://script.google.com/macros/s/AKfycbxtqLuQFB5N3fiLbWcjyHeeahW35ScsNhg7g5LoBiGuUuvjWyxOo4Rt6MlPR6amimo2hg/exec")
     elif msg == "彰化縣":
-        web = request.get("https://script.google.com/macros/s/AKfycbyfQhd8lJCa9y_dnNgpQOTbrMHs_EzeG8wU2upb1MUqvmU9nwVKMIZYr398_08FW-204g/exec")
+        web = requests.get("https://script.google.com/macros/s/AKfycbyfQhd8lJCa9y_dnNgpQOTbrMHs_EzeG8wU2upb1MUqvmU9nwVKMIZYr398_08FW-204g/exec")
     elif msg == "南投縣":
-        web = request.get("https://script.google.com/macros/s/AKfycbykOr3wu59I6qc8hu9ZV3cpEeCC-bJwV_kM6jhRvVDNXzX23jllYW1ci6nmgt6CrfZVJA/exec")
+        web = requests.get("https://script.google.com/macros/s/AKfycbykOr3wu59I6qc8hu9ZV3cpEeCC-bJwV_kM6jhRvVDNXzX23jllYW1ci6nmgt6CrfZVJA/exec")
     elif msg == "雲林縣":
-        web = request.get("https://script.google.com/macros/s/AKfycbxjJBG8q7I94GUdua2CvasNVAEYK_kd_pRQpLzBP4dkO2PfN9CJx-YdUsR-8IUhI-PurQ/exec")
+        web = requests.get("https://script.google.com/macros/s/AKfycbxjJBG8q7I94GUdua2CvasNVAEYK_kd_pRQpLzBP4dkO2PfN9CJx-YdUsR-8IUhI-PurQ/exec")
     elif msg == "花蓮縣":
-        web = request.get("https://script.google.com/macros/s/AKfycbx6hfZTVPTh8ORyKjwljlPEHsw0a9jyr71v7FSWTL5bbKah2WOSafEkWRMlcO9dx53A4w/exec")
+        web = requests.get("https://script.google.com/macros/s/AKfycbx6hfZTVPTh8ORyKjwljlPEHsw0a9jyr71v7FSWTL5bbKah2WOSafEkWRMlcO9dx53A4w/exec")
     elif msg == "台東縣":
-        web = request.get("https://script.google.com/macros/s/AKfycbxYSh1ai9lx3_uwI5VItqYNBpqiyKmLeLQg5-fUXMouwdJAMWBstbLLFGe2jpD1SUj8rA/exec")
+        web = requests.get("https://script.google.com/macros/s/AKfycbxYSh1ai9lx3_uwI5VItqYNBpqiyKmLeLQg5-fUXMouwdJAMWBstbLLFGe2jpD1SUj8rA/exec")
     elif msg == "金門縣":
-        web = request.get("https://script.google.com/macros/s/AKfycby_UVv28JGkHwK452KcGRWE-TR3OUGOJyYSpgl29axL3nCKtTZ5AU1koWhTgVCY99pFiQ/exec")
+        web = requests.get("https://script.google.com/macros/s/AKfycby_UVv28JGkHwK452KcGRWE-TR3OUGOJyYSpgl29axL3nCKtTZ5AU1koWhTgVCY99pFiQ/exec")
     elif msg == "澎湖縣":
-        web = request.get("https://script.google.com/macros/s/AKfycbycSHjGoTLzFyCWkF354TBUv_HyUlpPou_J4WOzQSLlh1HKDrLb0QyxMJ6Aw75oi5Ms4g/exec")
+        web = requests.get("https://script.google.com/macros/s/AKfycbycSHjGoTLzFyCWkF354TBUv_HyUlpPou_J4WOzQSLlh1HKDrLb0QyxMJ6Aw75oi5Ms4g/exec")
     elif msg == "連江縣":
-        web = request.get("https://script.google.com/macros/s/AKfycbzsDX_u9Qcm9yWJB_VgwMokQqOps0lESB5V_PP5NqBcJ-Cts8gCyvTRd6hZ_3EmhfEzRQ/exec")
+        web = requests.get("https://script.google.com/macros/s/AKfycbzsDX_u9Qcm9yWJB_VgwMokQqOps0lESB5V_PP5NqBcJ-Cts8gCyvTRd6hZ_3EmhfEzRQ/exec")
     elif msg == "宜蘭縣":
-        web = request.get("https://script.google.com/macros/s/AKfycbxww_yr4v5LI4AGaQWB1IZOtuH71rxTa3UDeevgmzxsSfPXTvyXJ4gkVzYM3wHsUQ0RmA/exec")
+        web = requests.get("https://script.google.com/macros/s/AKfycbxww_yr4v5LI4AGaQWB1IZOtuH71rxTa3UDeevgmzxsSfPXTvyXJ4gkVzYM3wHsUQ0RmA/exec")
     elif msg == "屏東縣":
-        web = request.get("https://script.google.com/macros/s/AKfycbw7dqUwNwk2EE2QXAyXz0fFhQFEnRI-qCmwSeZ_NG_a9H_TIi1E53G8lUB92_i0T5BtDA/exec")
+        web = requests.get("https://script.google.com/macros/s/AKfycbw7dqUwNwk2EE2QXAyXz0fFhQFEnRI-qCmwSeZ_NG_a9H_TIi1E53G8lUB92_i0T5BtDA/exec")
     elif msg == "台南市":
-        web = request.get("https://www.google.com/url?q=https://script.google.com/macros/s/AKfycbyioRarcPxf69FalbAgI_G1sxDuEvYHBTukh-dGQamgFeYy0tKUd3fL4NHsAZbPytClpw/exec&sa=D&source=editors&ust=1716878970978048&usg=AOvVaw167V3-om2NZ-FW6ELySfcD")
+        web = requests.get("https://www.google.com/url?q=https://script.google.com/macros/s/AKfycbyioRarcPxf69FalbAgI_G1sxDuEvYHBTukh-dGQamgFeYy0tKUd3fL4NHsAZbPytClpw/exec&sa=D&source=editors&ust=1716878970978048&usg=AOvVaw167V3-om2NZ-FW6ELySfcD")
     elif msg == "高雄市":
-        web = request.get("https://script.google.com/macros/s/AKfycbxQVrG-p71kc7r6AazfctjOGcNEBeG4G7z6cis0Nw-l0CjpXmrXsBEZRzwYOFLe0Icn1g/exec")
+        web = requests.get("https://script.google.com/macros/s/AKfycbxQVrG-p71kc7r6AazfctjOGcNEBeG4G7z6cis0Nw-l0CjpXmrXsBEZRzwYOFLe0Icn1g/exec")
     elif msg == "嘉義縣":
-        web = request.get("https://script.google.com/macros/s/AKfycbyJ8WUUQjF5gsEJTm6MY2KATJP4ku8hoRILfACgBbqM5sNIkWcBZOxXNJnhzfr5yBwBSQ/exec")
+        web = requests.get("https://script.google.com/macros/s/AKfycbyJ8WUUQjF5gsEJTm6MY2KATJP4ku8hoRILfACgBbqM5sNIkWcBZOxXNJnhzfr5yBwBSQ/exec")
     elif msg == "嘉義市":
-        web = request.get("https://script.google.com/macros/s/AKfycbyZuzwAXn_yMlNuMUfB2U3GCAqADqYbRjG2jhTk3d8MHlqFw_0UeTb_i9Rt46WyQL_mgw/exec")
+        web = requests.get("https://script.google.com/macros/s/AKfycbyZuzwAXn_yMlNuMUfB2U3GCAqADqYbRjG2jhTk3d8MHlqFw_0UeTb_i9Rt46WyQL_mgw/exec")
     else:
         return False
     return web
