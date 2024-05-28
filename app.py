@@ -56,6 +56,23 @@ def handle_message(event):
             data = url_link.json() 
             for i in data:
                 if i[0] == msg:
+
+                    i[1] = "院所名稱: " + i[1]
+                    i[2] = "院所地址: " + i[2]
+                    i[3] = "電話: " + i[3]
+                    i[4] = "疫苗種類: " + i[4]
+                    try:
+                        i[5] = "施打時間: " + i[5]
+                    except:
+                        pass
+                    try:
+                        i[6] = "收費標準: " + i[6]
+                    except:
+                        pass
+                    try:
+                        i[6] = "收費標準: " + i[6]
+                    except:
+                        pass
                     answer = '\n'.join(i)
                     reply.append(answer)
                 
