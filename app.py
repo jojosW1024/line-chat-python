@@ -148,7 +148,7 @@ def url(msg):
     elif msg == "屏東縣":
         web = requests.get("https://script.google.com/macros/s/AKfycbw7dqUwNwk2EE2QXAyXz0fFhQFEnRI-qCmwSeZ_NG_a9H_TIi1E53G8lUB92_i0T5BtDA/exec")
     elif msg == "台南市" or msg == "臺南市":
-        web = requests.get("https://script.google.com/macros/s/AKfycbzsDX_u9Qcm9yWJB_VgwMokQqOps0lESB5V_PP5NqBcJ-Cts8gCyvTRd6hZ_3EmhfEzRQ/exec")
+        web = requests.get("https://script.google.com/macros/s/AKfycbyioRarcPxf69FalbAgI_G1sxDuEvYHBTukh-dGQamgFeYy0tKUd3fL4NHsAZbPytClpw/exec")
     elif msg == "高雄市":
         web = requests.get("https://script.google.com/macros/s/AKfycbxQVrG-p71kc7r6AazfctjOGcNEBeG4G7z6cis0Nw-l0CjpXmrXsBEZRzwYOFLe0Icn1g/exec")
     elif msg == "嘉義縣":
