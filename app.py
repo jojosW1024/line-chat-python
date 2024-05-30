@@ -45,7 +45,7 @@ def handle_message(event):
             url_link = url(msg) #問縣市層級並找出相對應的連結
             data = url_link.json() 
             global county
-            ele = msg
+            county = msg
         
             region = []
             count = 0
@@ -95,8 +95,10 @@ def handle_message(event):
                 line_bot_api.reply_message(event.reply_token, TextSendMessage(text ="\n- \n".join(reply))) 
 
         else:
-            emoji = [{"index": 0, "productId": "5ac22bad031a6752fb806d67", "emojiId": "148"}]
-            text_message = TextSendMessage(text='$ ===縣市與行政區的輸入可能有誤\n請重新查詢縣市===', emojis= emoji)
+            emoji = [{"index": 0, "productId": "5ac22bad031a6752fb806d67", "emojiId": "146"}, 
+                     {"index": 1, "productId": "5ac22bad031a6752fb806d67", "emojiId": "147"},
+            {"index": 2, "productId": "5ac22bad031a6752fb806d67", "emojiId": "148"}]
+            text_message = TextSendMessage(text='$$$ ===縣市與行政區的輸入可能有誤\n請重新查詢縣市===', emojis= emoji)
             line_bot_api.reply_message(event.reply_token,text_message)
             county = "" 
     except Exception as e:
