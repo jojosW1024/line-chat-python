@@ -87,8 +87,11 @@ def handle_message(event):
                 
             if reply == []:
                 #如果輸入不符合區域格式或找不到
-                reply = f"您輸入之區域不在該縣市或是輸入的格式錯誤\n=========若要重新搜尋，重新輸入區域或其他縣市即可========="  
-                line_bot_api.reply_message(event.reply_token, TextSendMessage(text = reply))
+                emoji = [{"index": 0, "productId": "5ac22bad031a6752fb806d67", "emojiId": "146"}, 
+                     {"index": 1, "productId": "5ac22bad031a6752fb806d67", "emojiId": "147"},
+            {"index": 2, "productId": "5ac22bad031a6752fb806d67", "emojiId": "148"}]
+                reply = f"$$$ 您輸入之區域不在該縣市或是輸入的格式錯誤\n===若要重新搜尋，重新輸入區域或其他縣市即可==="  
+                line_bot_api.reply_message(event.reply_token, TextSendMessage(text = reply, emojis= emoji))
 
             else:
                 reply.append("\n=========若要重新搜尋，重新輸入區域或其他縣市即可=========")
