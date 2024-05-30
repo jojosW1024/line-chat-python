@@ -52,20 +52,19 @@ def handle_message(event):
             for i in data:
                 if i[0] not in region:
                     count += 1
-                    if count%7 == 0:
-                        region.append(f"{i[0]}\n")
+                    if count%7 == 1:
+                        region.append(f"\n{i[0]}")
                     else:
-                        region.append(i[0])
-            region_txt = ", ".join(region)
-            reply = f"請輸入其中一個以下行政區:\n{region_txt}"
+                        region.append(f" i[0]")
+            region_txt = ",".join(region)
+            reply = f"請輸入其中一個以下行政區:{region_txt}"
             line_bot_api.reply_message(event.reply_token, TextSendMessage(text = reply))
-        elif ele != "" and ele in ["基隆市", "台北市", "新北市", '桃園市', '新竹縣', '新竹市', "苗栗縣", "台中市", "彰化縣", "南投縣", "雲林縣", "嘉義縣", "嘉義市", "台南市", "高雄市", "屏東縣", "宜蘭縣", "花蓮縣", "台東縣", "澎湖縣", "連江縣", "金門縣"]:
+        elif ele in ["基隆市", "台北市", "新北市", '桃園市', '新竹縣', '新竹市', "苗栗縣", "台中市", "彰化縣", "南投縣", "雲林縣", "嘉義縣", "嘉義市", "台南市", "高雄市", "屏東縣", "宜蘭縣", "花蓮縣", "台東縣", "澎湖縣", "連江縣", "金門縣"]:
             reply = []
             url_link = url(ele)
             data = url_link.json() 
             for i in data:
                 if str(i[0]) == msg:
-
                     i[1] = "院所名稱: " + str(i[1])
                     i[2] = "院所地址: " + str(i[2])
                     i[3] = "電話: " + str(i[3])
@@ -87,21 +86,20 @@ def handle_message(event):
                 
             if reply == []:
                 #如果輸入不符合區域格式或找不到
-                reply = f"您輸入之區域不在該縣市或是輸入的格式錯誤/n=========請重新輸入區域，或重新搜尋其他縣市========="  
+                reply = f"您輸入之區域不在該縣市或是輸入的格式錯誤\n=========請重新輸入區域，或重新搜尋其他縣市========="  
                 line_bot_api.reply_message(event.reply_token, TextSendMessage(text = reply))
 
             else:
                 reply.append("\n=========若要重新搜尋，輸入其他縣市即可=========")
                 line_bot_api.reply_message(event.reply_token, TextSendMessage(text ="\n- \n".join(reply))) 
-                ele = ""
 
         else:
-            fih = "=========縣市與行政區的輸入可能有誤或該行政區查無特約醫療機構\n請重新查詢========="
+            fih = "=========縣市與行政區的輸入可能有誤\n請重新查詢========="
             text_message = TextSendMessage(text=fih)
             line_bot_api.reply_message(event.reply_token,text_message)
-            ele = ""
+            ele = "" 
     except Exception as e:
-        reply = TextSendMessage(text=f"奇怪餒，發生錯誤：{str(e)}")
+        reply = TextSendMessage(text=f"奇怪餒，發生錯誤：{str(e)}\n=========請重新查詢=========")
         line_bot_api.reply_message(event.reply_token, reply)
         ele = ""
         #event.message.text 代表接受到的「訊息」
