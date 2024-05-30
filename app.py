@@ -55,7 +55,7 @@ def handle_message(event):
                     if count%7 == 1:
                         region.append(f"\n{i[0]}")
                     else:
-                        region.append(f" i[0]")
+                        region.append(f" {i[0]}")
             region_txt = ",".join(region)
             reply = f"請輸入其中一個以下行政區:{region_txt}"
             line_bot_api.reply_message(event.reply_token, TextSendMessage(text = reply))
