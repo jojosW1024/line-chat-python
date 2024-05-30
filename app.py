@@ -53,10 +53,11 @@ def handle_message(event):
                 if i[0] not in region:
                     count += 1
                     if count%7 == 1:
-                        region.append(f"\n{i[0]}")
-                    else:
-                        region.append(f" {i[0]}")
-            region_txt = ",".join(region)
+                        region.append(f"\n")               
+                    region.append(f"{i[0]}")
+                    region.append(", ")
+
+            region_txt = "".join(region)
             reply = f"請輸入其中一個以下行政區:{region_txt}"
             line_bot_api.reply_message(event.reply_token, TextSendMessage(text = reply))
         elif ele in ["基隆市", "台北市", "新北市", '桃園市', '新竹縣', '新竹市', "苗栗縣", "台中市", "彰化縣", "南投縣", "雲林縣", "嘉義縣", "嘉義市", "台南市", "高雄市", "屏東縣", "宜蘭縣", "花蓮縣", "台東縣", "澎湖縣", "連江縣", "金門縣"]:
