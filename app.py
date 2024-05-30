@@ -34,6 +34,8 @@ def callback():
 
 global ele
 ele = ""
+global info 
+info = None
 
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
@@ -51,10 +53,10 @@ def handle_message(event):
                 if i[0] not in region:
                     count += 1
                     if count%7 == 0:
-                        region.append(f"\n{i[0]}")
+                        region.append(f"{i[0]}\n")
                     else:
                         region.append(i[0])
-            region_txt = ",".join(region)
+            region_txt = ", ".join(region)
             reply = f"請輸入其中一個以下行政區:\n{region_txt}"
             line_bot_api.reply_message(event.reply_token, TextSendMessage(text = reply))
         elif ele != "" and ele in ["基隆市", "台北市", "新北市", '桃園市', '新竹縣', '新竹市', "苗栗縣", "台中市", "彰化縣", "南投縣", "雲林縣", "嘉義縣", "嘉義市", "台南市", "高雄市", "屏東縣", "宜蘭縣", "花蓮縣", "台東縣", "澎湖縣", "連江縣", "金門縣"]:
@@ -77,7 +79,7 @@ def handle_message(event):
                     except:
                         pass
                     try:
-                        i[7] = "收費標準: " + str(i[7])
+                        i[7] = "附註: " + str(i[7])
                     except:
                         pass
                     answer = '\n'.join(i[1:])
@@ -85,9 +87,9 @@ def handle_message(event):
                 
             if reply == []:
                 #如果輸入不符合區域格式或找不到
-                reply = "您輸入之區域不在該縣市或是輸入的區域格式錯誤"  
+                reply = f"您輸入之區域不在該縣市或是輸入的格式錯誤/n=========請重新輸入區域，或重新搜尋其他縣市========="  
                 line_bot_api.reply_message(event.reply_token, TextSendMessage(text = reply))
-                ele = ""
+
             else:
                 reply.append("\n=========若要重新搜尋，輸入其他縣市即可=========")
                 line_bot_api.reply_message(event.reply_token, TextSendMessage(text ="\n- \n".join(reply))) 
@@ -101,6 +103,7 @@ def handle_message(event):
     except Exception as e:
         reply = TextSendMessage(text=f"奇怪餒，發生錯誤：{str(e)}")
         line_bot_api.reply_message(event.reply_token, reply)
+        ele = ""
         #event.message.text 代表接受到的「訊息」
 
 
