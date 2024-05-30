@@ -32,7 +32,7 @@ def callback():
         abort(400)
     return 'OK'
 
-global ele
+global county
 county = ""
 
 
@@ -105,7 +105,6 @@ def handle_message(event):
         reply = TextSendMessage(text=f"發生錯誤：{str(e)}\n=========請重新查詢縣市=========")
         sticker_message = StickerSendMessage(sticker_id=52114127, package_id=11539)
         line_bot_api.reply_message(event.reply_token, sticker_message)
-        line_bot_api.reply_message(event.reply_token, reply)
         county = ""
         #event.message.text 代表接受到的「訊息」
 
